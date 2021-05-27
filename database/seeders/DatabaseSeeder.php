@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         User::create([
             'id' => Str::uuid(),
             'name' => 'Lars Wiegers',
-            'email' => 'larswiegers@live.nl',
-            'password' => Hash::make('6XyonQ5Is*VY9zW%w#dkMQt7'),
+            'email' => env('DEFAULT_USER_EMAIL'),
+            'password' => Hash::make(env('DEFAULT_USER_PASSWORD')),
         ]);
     }
 }
