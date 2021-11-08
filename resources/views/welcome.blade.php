@@ -65,7 +65,7 @@
 
                             <div class="border-t-2 border-gray-100 pt-6">
                                 <dt class="text-base font-medium text-gray-500">Awesome projects</dt>
-                                <dd class="text-3xl font-extrabold tracking-tight text-gray-900">5+</dd>
+                                <dd class="text-3xl font-extrabold tracking-tight text-gray-900">6+</dd>
                             </div>
                         </dl>
                         <div class="mt-10">
