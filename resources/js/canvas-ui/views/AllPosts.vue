@@ -52,12 +52,6 @@
                         <infinite-loading spinner="spiral" @infinite="fetchPosts">
                             <span slot="no-more" />
                             <div slot="no-results" class="text-left">
-                                <div class="my-5">
-                                    <p class="lead text-center text-muted mt-5">You have no published posts</p>
-                                    <p class="lead text-center text-muted mt-1">
-                                        Write on the go with our mobile-ready app!
-                                    </p>
-                                </div>
                             </div>
                         </infinite-loading>
                     </div>

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Lars Wiegers',
             'email' => env('DEFAULT_USER_EMAIL'),
             'password' => Hash::make(env('DEFAULT_USER_PASSWORD')),
+            'role' => 3, // ADMIN allows us to do everything
         ]);
     }
 }
