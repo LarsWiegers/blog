@@ -12,7 +12,6 @@ class CanvasServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 
     /**

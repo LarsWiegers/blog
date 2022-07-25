@@ -27,7 +27,6 @@ class CanvasUiController extends Controller
         ]);
     }
 
-
     public function getPosts(Request $request): LengthAwarePaginator
     {
         return Post::latest()->published()->with('user', 'topic')->paginate();
@@ -48,7 +47,6 @@ class CanvasUiController extends Controller
             return response()->json(null, 404);
         }
     }
-
 
     public function getTags(Request $request): string
     {
@@ -74,7 +72,6 @@ class CanvasUiController extends Controller
 
         return $tag ? response()->json($tag->posts()->with('topic', 'user')->paginate(), 200) : response()->json(null, 200);
     }
-
 
     public function getTopics(Request $request): string
     {
