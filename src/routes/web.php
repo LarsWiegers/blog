@@ -21,7 +21,7 @@ Route::prefix('blog')->group(function () {
     Route::prefix('api')->group(function () {
         Route::get('posts', [\App\Http\Controllers\CanvasUiController::class, 'getPosts']);
         Route::get('posts/{slug}', [\App\Http\Controllers\CanvasUiController::class, 'showPost'])
-             ->middleware('Canvas\Http\Middleware\Session');
+            ->middleware('Canvas\Http\Middleware\Session');
 
         Route::get('tags', [\App\Http\Controllers\CanvasUiController::class, 'getTags']);
         Route::get('tags/{slug}', [\App\Http\Controllers\CanvasUiController::class, 'showTag']);
@@ -36,6 +36,6 @@ Route::prefix('blog')->group(function () {
     });
 
     Route::get('/{view?}', [\App\Http\Controllers\CanvasUiController::class, 'index'])
-         ->where('view', '(.*)')
-         ->name('canvas-ui');
+        ->where('view', '(.*)')
+        ->name('canvas-ui');
 });

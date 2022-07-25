@@ -11,8 +11,6 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
-     * @return void
      */
     public function run()
     {
@@ -22,7 +20,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Lars Wiegers',
             'email' => env('DEFAULT_USER_EMAIL'),
             'password' => Hash::make(env('DEFAULT_USER_PASSWORD')),
-            'role' => 3, // ADMIN allows us to do everything
+            'role' => 3,
+            // ADMIN allows us to do everything
         ]);
     }
 }

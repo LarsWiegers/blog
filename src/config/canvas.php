@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Base Domain
@@ -90,5 +89,4 @@ return [
     'mail' => [
         'enabled' => env('CANVAS_MAIL_ENABLED', false),
     ],
-
 ];
