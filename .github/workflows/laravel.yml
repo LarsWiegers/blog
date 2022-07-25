@@ -1,0 +1,137 @@
+name: Laravel
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_call:
+
+jobs:
+  laravel-tests:
+
+    runs-on: ubuntu-latest
+    outputs:
+      body: ${{ steps.run-backend-tests.outputs.body }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Copy .env
+        run: cd src && php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring, intl
+          ini-values: post_max_size=256M, max_execution_time=180
+          coverage: xdebug
+          tools: php-cs-fixer, phpunit
+      - name: Install Dependencies
+        run: cd src && composer install -q --no-interaction --no-scripts
+      - name: Generate key
+        run: cd src && php artisan key:generate
+      - name: Directory Permissions
+        run: cd src && chmod -R 777 storage bootstrap/cache
+      - name: Create Database
+        run: |
+          cd src
+          mkdir -p database
+          touch database/database.sqlite
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        id: run-backend-tests
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: |
+          cd src 
+          vendor/bin/phpunit --coverage-text=tests/coverage/coverage.txt
+          body="Backend results:"
+          body+="$(head -n 10 tests/coverage/coverage.txt)"
+          body="${body//'%'/'%25'}"
+          body="${body//$'\n'/'%0A'}"
+          body="${body//$'\r'/'%0D'}"
+          echo "::set-output name=body::$body"
+
+  ecs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring, intl
+          ini-values: post_max_size=256M, max_execution_time=180
+          coverage: xdebug
+          tools: php-cs-fixer, phpunit
+      - name: Install Dependencies
+        run: cd src && composer install -q --no-interaction --no-scripts
+      - name: Run ecs
+        run: ./src/vendor/bin/ecs check src --config dev/ecs/ecs.php
+
+  translations:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring, intl
+          ini-values: post_max_size=256M, max_execution_time=180
+          coverage: xdebug
+          tools: php-cs-fixer, phpunit
+      - name: Install Dependencies
+        run: cd src && composer install -q --no-interaction --no-scripts
+      - name: Run translations check
+        run: cd src && php artisan translations:check --excludedDirectories=vendor
+
+  frontend-tests:
+    outputs:
+      body: ${{ steps.run-frontend-tests.outputs.body }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring, intl
+          ini-values: post_max_size=256M, max_execution_time=180
+          coverage: xdebug
+          tools: php-cs-fixer, phpunit
+      - name: Install Composer
+        run: cd src && composer install -q --no-interaction --no-scripts
+      - name: Install NPM Dependencies
+        run: cd src && npm install
+      - name: Run tests
+        id: run-frontend-tests
+        run: |
+          cd src 
+          body="<br><br>"
+          body+="Frontend results:"
+          body+="$(npm run test-coverage)"
+          body="${body//'%'/'%25'}"
+          body="${body//$'\n'/'%0A'}"
+          body="${body//$'\r'/'%0D'}"
+          body="${body//$'\r'/'%0D'}"
+          body="${body//=}"
+          body="${body//> test-coverage}"
+          body="${body//> jest --collect-coverage --coverageReporterstext-summary}"
+          echo "::set-output name=body::$body"
+
+  output-coverage:
+    if: github.ref != 'refs/heads/master'
+    runs-on: ubuntu-latest
+    needs:
+      - laravel-tests
+      - frontend-tests
+    steps:
+      - name: Create coverage comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ${{ needs.laravel-tests.outputs.body }} ${{ needs.frontend-tests.outputs.body }}

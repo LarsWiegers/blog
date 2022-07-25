@@ -1,0 +1,27 @@
+name: Deploy
+
+# Trigger the workflow on push and
+# pull request events on the production branch
+on:
+  push:
+    branches:
+      - production
+
+# Authenticate to the the server via ssh
+# and run our deployment script
+jobs:
+  default-workflow:
+    uses: ./.github/workflows/laravel.yml
+  deploy:
+    needs: default-workflow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_PROD }}
+          username: ${{ secrets.USERNAME_PROD }}
+          port: ${{ secrets.PORT_PROD }}
+          key: ${{ secrets.SSHKEY_PROD }}
+          script: "/var/www/html/.scripts/deploy.sh"
