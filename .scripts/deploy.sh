@@ -31,9 +31,6 @@ composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 # Clear the old cache
 php artisan clear-compiled
 
-# Run ziggy
-php artisan ziggy:generate
-
 # Recreate cache
 php artisan optimize
 
