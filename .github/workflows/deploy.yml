@@ -23,5 +23,5 @@ jobs:
           host: ${{ secrets.HOST_PROD }}
           username: ${{ secrets.USERNAME_PROD }}
           port: ${{ secrets.PORT_PROD }}
-          key: ${{ secrets.SSHKEY_PROD }}
+          password: ${{ secrets.PASSWORD_PROD }}
           script: "/var/www/html/.scripts/deploy.sh"
