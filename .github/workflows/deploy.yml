@@ -25,5 +25,5 @@ jobs:
           port: ${{ secrets.PORT_PROD }}
           password: ${{ secrets.PASSWORD_PROD }}
           script: |
-          cd /var/www/html/.scripts
-          bash deploy.sh
+            cd /var/www/html/.scripts
+            bash deploy.sh
