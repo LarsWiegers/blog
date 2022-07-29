@@ -24,4 +24,6 @@ jobs:
           username: ${{ secrets.USERNAME_PROD }}
           port: ${{ secrets.PORT_PROD }}
           password: ${{ secrets.PASSWORD_PROD }}
-          script: "/var/www/html/.scripts/deploy.sh"
+          script: |
+          cd /var/www/html/.scripts
+          bash deploy.sh
