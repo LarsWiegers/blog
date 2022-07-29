@@ -45,16 +45,4 @@ php artisan migrate --force
 # Exit maintenance mode
 php artisan up
 
-# Install the cli
-curl -sL https://sentry.io/get-cli/ | SENTRY_CLI_VERSION="2.2.0" bash
-# Setup configuration values
-SENTRY_AUTH_TOKEN=5f1abf9338e249188f6b3f94a5246f722a3757022d6f4ab19d8339e08aadc385 # From internal integration: Release management
-SENTRY_ORG=humblebid
-SENTRY_PROJECT=humblebid
-VERSION=`sentry-cli releases propose-version`
-# Workflow to create releases
-sentry-cli releases new "$VERSION"
-sentry-cli releases set-commits "$VERSION" --auto
-sentry-cli releases finalize "$VERSION"
-
 echo "Deployment finished!"
