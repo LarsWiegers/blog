@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Copy .env
-        run: cd src && php -r "file_exists('.env') || copy('.env.example', '.env');"
+        run:  php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -26,14 +26,13 @@ jobs:
           coverage: xdebug
           tools: php-cs-fixer, phpunit
       - name: Install Dependencies
-        run: cd src && composer install -q --no-interaction --no-scripts
+        run: composer install -q --no-interaction --no-scripts
       - name: Generate key
-        run: cd src && php artisan key:generate
+        run: php artisan key:generate
       - name: Directory Permissions
-        run: cd src && chmod -R 777 storage bootstrap/cache
+        run: chmod -R 777 storage bootstrap/cache
       - name: Create Database
         run: |
-          cd src
           mkdir -p database
           touch database/database.sqlite
       - name: Execute tests (Unit and Feature tests) via PHPUnit
@@ -42,7 +41,6 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: |
-          cd src 
           vendor/bin/phpunit --coverage-text=tests/coverage/coverage.txt
           body="Backend results:"
           body+="$(head -n 10 tests/coverage/coverage.txt)"
@@ -66,9 +64,8 @@ jobs:
           coverage: xdebug
           tools: php-cs-fixer, phpunit
       - name: Install Dependencies
-        run: cd src && composer install -q --no-interaction --no-scripts
-      - name: Run ecs
-        run: ./src/vendor/bin/ecs check src --config dev/ecs/ecs.php
+        run:  composer install -q --no-interaction --no-scripts
+      - name: Run ecs/vendor/bin/ecs check src --config dev/ecs/ecs.php
 
   translations:
 
@@ -85,9 +82,9 @@ jobs:
           coverage: xdebug
           tools: php-cs-fixer, phpunit
       - name: Install Dependencies
-        run: cd src && composer install -q --no-interaction --no-scripts
+        run:  composer install -q --no-interaction --no-scripts
       - name: Run translations check
-        run: cd src && php artisan translations:check --excludedDirectories=vendor
+        run:  php artisan translations:check --excludedDirectories=vendor
 
   frontend-tests:
     outputs:
@@ -104,13 +101,13 @@ jobs:
           coverage: xdebug
           tools: php-cs-fixer, phpunit
       - name: Install Composer
-        run: cd src && composer install -q --no-interaction --no-scripts
+        run:  composer install -q --no-interaction --no-scripts
       - name: Install NPM Dependencies
-        run: cd src && npm install
+        run:  npm install
       - name: Run tests
         id: run-frontend-tests
         run: |
-          cd src 
+          cd src
           body="<br><br>"
           body+="Frontend results:"
           body+="$(npm run test-coverage)"
