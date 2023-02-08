@@ -13,6 +13,17 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Karla&family=Merriweather:wght@400;700&display=swap">
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/github.min.css">
+    @production
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZN819RWGW"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-9ZN819RWGW');
+        </script>
+    @endproduction
 </head>
 <body class="mb-5">
 
