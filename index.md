@@ -6,9 +6,6 @@ hero:
   name: "Lars Wiegers"
   text: ""
   tagline: On a mission to create awesome software
-  image:
-    src: /pf-pic.jpg
-    alt: Lars Wiegers standing on stairs
   actions:
     - theme: brand
       text: GitHub
@@ -33,6 +30,6 @@ features:
       light: /globe-dark.svg
     title: Laravel translations checker
     details: A package that allows you to not worry about the translations in your application. It checks your translations files for missing translations.
+    link: https://github.com/LarsWiegers/laravel-translations-checker
 ---
-
 

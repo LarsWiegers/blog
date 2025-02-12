@@ -140,3 +140,8 @@
 .VPSidebarItem {
     margin: 0.5rem 0;
 }
+
+
+.VPHome .VPImage {
+    transform: scale(2);
+}
