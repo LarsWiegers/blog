@@ -1,6 +1,7 @@
 ---
-title: Docs with VitePress
-editLink: false
+title: Whats its like being a student and part time programmer
+date: 2021-05-27
+description: I created my first PHP package and it was actually fun
 ---
 # Whats its like being a student and part time programmer
 ![images/whats-its-like-being-a-student-and-part-time-programmer/group.jpg](./images/whats-its-like-being-a-student-and-part-time-programmer/group.jpg)

@@ -1,3 +1,8 @@
+---
+title: What I learned after maintaining my first package for 8 months
+date: 2021-06-22
+description: I created my first PHP package and it was actually fun
+---
 # What I learned after maintaining my first package for 8 months
 ## What is the package?
 About eight months ago I released my package Laravel-maps, the goals was to create a better experience for people that want to use maps in their website / webapp. By creating blade components that can easily be used. Currently it supports leaflet.js and google maps.

@@ -11,11 +11,28 @@ hero:
     alt: Lars Wiegers standing on stairs
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: GitHub
+      link: https://github.com/LarsWiegers
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Blog
+      link: /blog
 
+features:
+  - icon: 
+      src: /package-pages.png
+    title: Packagepages.dev
+    details: PackagePages is the easiest way to track your package downloads and manage issues / pull requests.
+    link: https://packagepages.dev
+  - icon:
+      src: /package-pages.png
+    title: LaravelPackage.com
+    link: https://laravelpackage.com
+    details: LaravelPackage is the easiest way to learn about Laravel packages and how to create them.
+  - icon:
+      dark: /globe-light.svg
+      light: /globe-dark.svg
+    title: Laravel translations checker
+    details: A package that allows you to not worry about the translations in your application. It checks your translations files for missing translations.
 ---
+
 

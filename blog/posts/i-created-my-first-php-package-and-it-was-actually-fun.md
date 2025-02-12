@@ -1,3 +1,8 @@
+---
+title: I created my first PHP package and it was actually fun
+date: 2022-02-22
+description: I created my first PHP package and it was actually fun
+---
 # I created my first php package and it was actually fun
 One might think that is a lot of work to create a package but it is actually not. As you might now I mainly work in PHP and this is also the language in which I created the package. There are even boilerplate code generators available that make it even easier. In general I encourage others to also take the opportunity to at least try creating a package, you don’t have to release it 😉. You can find my package here: https://github.com/LarsWiegers/laravel-maps
 ![images/i-created-my-first-php-package-and-it-was-actually-fun/logo.png](./images/i-created-my-first-php-package-and-it-was-actually-fun/logo.png)
