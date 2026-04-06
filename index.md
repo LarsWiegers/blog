@@ -17,6 +17,8 @@ hero:
 features:
   - icon: 
       src: /home/package-pages.png
+      width: 48
+      height: 48
     title: Packagepages.dev
     details: PackagePages is the easiest way to track your package downloads and manage issues / pull requests.
     link: https://packagepages.dev
