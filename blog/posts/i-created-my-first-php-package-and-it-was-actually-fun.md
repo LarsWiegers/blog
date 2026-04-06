@@ -11,7 +11,7 @@ One might think that is a lot of work to create a package but it is actually not
 During one of my work projects I needed a map to be visible on the screen. The map should also support custom icons and be easy to use / maintainable. Seems pretty easy right? Well … It turns out there were no php 8 packages available for this (At least that I could find). And I had been toying with the idea to create a package for a while, but I had not found the right problem for it yet. Now I did.
 
 ## Starting up
-So we have the idea and the [images](images)goal to create package. I had been following @marcelpociot on twitter for a while and he shared that his company @beyondcode had created a boilerplate generator. Your can find it here https://laravelpackageboilerplate.com/ . So this is what I used. Later on I learned that the @Spatie guys also have a package generator and I assume it does mostly the same thing.
+So we have the idea and the goal to create package. I had been following @marcelpociot on twitter for a while and he shared that his company @beyondcode had created a boilerplate generator. Your can find it here https://laravelpackageboilerplate.com/ . So this is what I used. Later on I learned that the @Spatie guys also have a package generator and I assume it does mostly the same thing.
 
 ## The goal
 I started with what I wanted the syntax to be which was a blade component. Blade is the templating language that Laravel uses. I wanted to be able to add this `<x-maps-leaflet></x-maps-leaflet>` to my and be able to see a map.
