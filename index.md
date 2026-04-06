@@ -16,18 +16,18 @@ hero:
 
 features:
   - icon: 
-      src: /blog/package-pages.png
+      src: /home/package-pages.png
     title: Packagepages.dev
     details: PackagePages is the easiest way to track your package downloads and manage issues / pull requests.
     link: https://packagepages.dev
   - icon:
-      src: /blog/package-pages.png
+      src: /home/package-pages.png
     title: LaravelPackage.com
     link: https://laravelpackage.com
     details: LaravelPackage is the easiest way to learn about Laravel packages and how to create them.
   - icon:
-      dark: /blog/globe-light.svg
-      light: /blog/globe-dark.svg
+      dark: /home/globe-light.svg
+      light: /home/globe-dark.svg
     title: Laravel translations checker
     details: A package that allows you to not worry about the translations in your application. It checks your translations files for missing translations.
     link: https://github.com/LarsWiegers/laravel-translations-checker
